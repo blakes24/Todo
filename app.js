@@ -25,10 +25,12 @@ if (get) {
 addBtn.addEventListener('click', function(e) {
 	e.preventDefault();
 	let todoText = document.querySelector('input[type="text"]');
-	makeTodo(todoText.value);
-	data.push({ text: todoText.value, completed: false });
-	localStorage.setItem('items', JSON.stringify(data));
-	todoText.value = '';
+	if (todoText.value !== '') {
+		makeTodo(todoText.value);
+		data.push({ text: todoText.value, completed: false });
+		localStorage.setItem('items', JSON.stringify(data));
+		todoText.value = '';
+	}
 });
 
 todoList.addEventListener('click', function(e) {
